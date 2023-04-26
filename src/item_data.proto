@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package itemdetail;
+
+service SearchService{
+    rpc SearchItem(ItemRequest) returns (ItemResponse);
+}
+
+message ItemRequest {
+    int32 item_number = 1;
+}
+
+message ItemResponse{
+    string name = 1;
+    int32 price = 2;
+    string currency = 3;
+}
