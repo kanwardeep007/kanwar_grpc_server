@@ -48,7 +48,7 @@ impl SearchService for MyService {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let addr = "[::1]:50051".parse()?;
+    let addr = "[::1]:5001".parse()?;
     let item_service = MyService::default();
 
     Server::builder()

@@ -1,0 +1,13 @@
+FROM rust:1.67 as builder
+WORKDIR /usr/src/myserver
+RUN apt-get update
+COPY . .
+# RUN curl -o /dev/null https://github.com/
+RUN apt-get install -y protobuf-compiler libprotobuf-dev
+RUN cargo install --path .
+
+
+FROM debian:bullseye-slim
+COPY --from=builder /usr/local/cargo/bin/item-server /usr/local/bin/item-server
+
+CMD ["item-server"]
